@@ -32,6 +32,40 @@ textarea{min-height:84px;resize:vertical}
 .warn{font-size:14px;color:#9a5427}.hidden{display:none}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:14px}.panel{padding:16px}}
 @media print{header,.toolbar,.nav,.no-print{display:none}.layout{display:block}.panel{box-shadow:none}}
+
+/* Visual hierarchy: participant evidence vs independent judgment */
+:root{background:#edf2f7;color:#183044}
+body{background:linear-gradient(180deg,#e7eff7 0,#f5f8fb 430px,#f5f8fb 100%)}
+header{background:linear-gradient(115deg,#152e50,#245b79 75%,#257c92);box-shadow:0 5px 22px #18384a24}
+header .tag{color:#b6e8f0}header h1{letter-spacing:-.025em}
+.panel{box-shadow:0 9px 30px #203c5710;border-radius:17px}
+.layout{gap:26px;align-items:stretch}
+.source-panel,.judge-panel{position:relative;padding-top:30px}
+.source-panel{background:#fff9f2;border:2px solid #efd9be;border-top:9px solid #d78d43}
+.judge-panel{background:#f3f9ff;border:2px solid #b9d8ef;border-top:9px solid #267cb4}
+.source-panel .section-kicker{color:#9d5a20}.judge-panel .section-kicker{color:#14679e}
+.source-panel h2{color:#8b4c19}.judge-panel h2{color:#175e90}
+.source-panel .field{background:#fff;border:1px solid #efdfcb;border-left:5px solid #e5aa6b;box-shadow:0 2px 7px #80562a0b}
+.source-panel .field label{color:#925822;font-size:13px}
+.source-panel .field div{color:#2b343b}
+.judge-panel .control{background:white;border:1px solid #cfe2f0;border-left:5px solid #7db7d9;box-shadow:0 2px 7px #1c68950a}
+.judge-panel .note{background:#e8f3fd;border-left-color:#247cb4}
+.source-panel .note{background:#fff0dd;border-left-color:#d78d43}
+.choice{min-width:98px;transition:background .15s,border-color .15s}
+.choice.selected{background:#d9ecfa;border-color:#2375a8;box-shadow:0 0 0 2px #b9dff6}
+input[type=range]{accent-color:#247eb4;height:22px}
+.score{background:#e6f3fc;border-radius:9px;padding:6px 10px}
+.intro{border-left:7px solid #d6a44e;background:#fffefb}
+.example{background:#fff8e9}
+.footer-save{background:linear-gradient(115deg,#eef8ff,#fff);border:2px solid #bddbea;border-top:7px solid #267cb4}
+button.primary{background:#196fa7;border-color:#196fa7;box-shadow:0 3px 8px #176ea522}
+button.primary:hover:not(:disabled){background:#135b8a}
+.section-kicker{letter-spacing:.075em}
+.zone-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:13px;border-bottom:1px solid currentColor}
+.zone-icon{display:grid;place-items:center;flex:none;width:48px;height:48px;border-radius:13px;font-size:23px;font-weight:850}
+.source-panel .zone-icon{background:#f8e2c7;color:#9d5a20}.judge-panel .zone-icon{background:#dceefb;color:#176eaa}
+.zone-header h2{margin:2px 0 0}.zone-header .section-kicker{margin:0}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.zone-icon{width:42px;height:42px}}
 </style></head><body>
 <header><div class="shell top"><div><div class="tag">FONDECYT Exploración 13250033</div>
 <h1>Evaluación independiente de actividades de innovación</h1><p>Instrumento de evaluación textual · Sin fotografías ni objetos físicos</p></div>
@@ -58,10 +92,10 @@ textarea{min-height:84px;resize:vertical}
 <button id="hideIntro" style="margin-top:12px">Ocultar / mostrar ejemplo</button>
 </section>
 <div class="layout">
-<section class="panel source-panel"><div class="section-kicker">A · Información original · Solo lectura</div><h2 id="caseTitle">Respuestas del participante</h2>
+<section class="panel source-panel"><div class="zone-header"><div class="zone-icon">A</div><div><div class="section-kicker">Actividad del participante · Solo lectura</div><h2 id="caseTitle">Respuestas del participante</h2></div></div>
 <div class="note">Evalúe únicamente la información escrita. «[Sin texto]» significa que no hay respuesta registrada; no equivale necesariamente a una respuesta incorrecta.</div>
 <div id="evidence"></div></section>
-<section class="panel judge-panel"><div class="section-kicker">B · Sus respuestas · Completar aquí</div><h2>Juicio del evaluador</h2>
+<section class="panel judge-panel"><div class="zone-header"><div class="zone-icon">B</div><div><div class="section-kicker">Evaluación del juez · Completar aquí</div><h2>Su evaluación</h2></div></div>
 <div class="note">Marque Sí, No o No evaluable en las preguntas binarias. Para las escalas, mueva el marcador al punto que represente su juicio (0–100). Los controles se registran en pasos de 1 punto y comienzan sin puntuación.</div>
 <div id="ratings"></div>
 <h3>Comentarios y observaciones</h3><textarea id="comments" placeholder="Fundamente puntuaciones inusuales, ambigüedades o dificultades de interpretación…"></textarea>
